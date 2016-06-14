@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" href="documents/textstyles_nf.css" rel="stylesheet">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery_utils.js"></script>
+<script type="text/javascript">
+
+
+function send_size()
+{
+	h=$('.div').outerHeight(false);w=$('.div').outerWidth(false);
+	document.location='data.html?data&h='+h+'&w='+w+'&=u=1';
+}
+$(document).ready(function(){
+	send_size();
+});
+var HSL=new Object();var RGB=new Object();var tempRGB=new Object();RGB.R=RGB.G=RGB.B=0;tempRGB.R=tempRGB.G=tempRGB.B=0;HSL.H=HSL.S=HSL.L=0;var HEXCodes=new Array(256);var k=0;var HEX=new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F");for(i=0;i<16;i++){for(j=0;j<16;j++){HEXCodes[k]=HEX[i]+HEX[j];k++;}}
+function SetHex(bgColor)
+{
+	var i=0;
+	if(bgColor.substring(0,3)=="rgb") 
+	{
+		bgColor=bgColor.substring(4,bgColor.length-1);rgbArray=bgColor.split(", ");
+		ChangeColors(rgbArray[0],rgbArray[1],rgbArray[2]);return;
+	}
+	if(bgColor.length==0) return;
+	if(bgColor.length==7) bgColor=bgColor.substring(1,7);
+	if(bgColor.length<6){alert("HEX value should be 6 characters long!");return;}
+	bgColor=bgColor.toUpperCase();
+	while(HEXCodes[i] != bgColor.substring(0,2).toUpperCase()) i++;
+	RGB.R=i;i=0;
+	while(HEXCodes[i] != bgColor.substring(2,4).toUpperCase()) i++;
+	RGB.G=i;i=0;
+	while(HEXCodes[i] != bgColor.substring(4,6).toUpperCase()) i++;RGB.B=i;ChangeColors(RGB.R,RGB.G,RGB.B);
+}
+function isHex(hexChar) 
+{
+	for(k=0;k<HEX.length;k++) {if(hexChar==HEX[k]) return true;}
+	return false;
+}
+function ChangeColors(r,g,b)
+{
+	if(!(r>=0)&&!(r<=255)) r=0;
+	if(!(g>=0)&&!(g<=255)) g=0;
+	if(!(b>=0)&&!(b<=255)) b=0;
+	RGB.R=r;RGB.G=g;RGB.B=b;document.getElementById('codes').hex.value=HEXCodes[r]+HEXCodes[g]+HEXCodes[b];
+	DrawWheel();
+}
+function DrawWheel()
+{
+	var red,green,blue,direction;RGBtoHSL(RGB.R,RGB.G,RGB.B);
+	for(i=0;i<12;i++) 
+	{
+		HSLtoRGB(HSL.H,HSL.S,HSL.L);red=HEXCodes[tempRGB.R];green=HEXCodes[tempRGB.G];blue=HEXCodes[tempRGB.B];
+		if(i==0)document.getElementById('x'+i).style.backgroundColor="#"+red+green+blue;
+		document.getElementById('w'+i).style.backgroundColor="#"+red+green+blue;
+		HSL.H+=30;
+		if(HSL.H>=360)HSL.H-=360;
+	}
+	RGBtoHSL(RGB.R,RGB.G,RGB.B);
+	for(i=1;i<=4;i++)
+	{
+		if(i==3){RGBtoHSL(RGB.R,RGB.G,RGB.B);HSL.H+=180;if(HSL.H>=360) HSL.H-=360;}
+		if(i==1)direction=(HSL.L<60)?1:-1;
+		HSL.L+=direction*12;HSLtoRGB(HSL.H,HSL.S,HSL.L);red=HEXCodes[tempRGB.R];green=HEXCodes[tempRGB.G];blue=HEXCodes[tempRGB.B];
+		document.getElementById('m'+i).style.backgroundColor="#"+red+green+blue;
+	}
+}
+function lighter(){RGBtoHSL(RGB.R,RGB.G,RGB.B);HSL.L=HSL.L+5;if(HSL.L>100) HSL.L=100;HSLtoRGB(HSL.H,HSL.S,HSL.L);ChangeColors(tempRGB.R,tempRGB.G,tempRGB.B);}
+function darker(){RGBtoHSL(RGB.R,RGB.G,RGB.B);HSL.L=HSL.L-5;if(HSL.L<0) HSL.L=0;HSLtoRGB(HSL.H,HSL.S,HSL.L);ChangeColors(tempRGB.R,tempRGB.G,tempRGB.B);}
+function HSLtoRGB(H,S,L)
+{
+	var p1,p2;L/=100;S/=100;p2=(L<=0.5)?L*(1+S):p2=L+S-(L*S);p1=2*L-p2;
+	if(S==0) {tempRGB.R=L;tempRGB.G=L;tempRGB.B=L;}
+	else {tempRGB.R=FindRGB(p1,p2,H+120);tempRGB.G=FindRGB(p1,p2,H);tempRGB.B=FindRGB(p1,p2,H-120);}
+	tempRGB.R *=255;tempRGB.G *=255;tempRGB.B *=255;tempRGB.R=Math.round(tempRGB.R);
+	tempRGB.G=Math.round(tempRGB.G);tempRGB.B=Math.round(tempRGB.B);
+}
+function FindRGB(q1,q2,hue) 
+{
+	if(hue>360) hue=hue-360;if(hue<0) hue=hue+360;
+	if(hue<60) return (q1+(q2-q1)*hue/60);
+	else if(hue<180)return(q2);
+	else if(hue<240) return(q1+(q2-q1)*(240-hue)/60);
+	else return(q1);
+}
+function RGBtoHSL(r,g,b)
+{
+	var Min=0;var Max=0;r=(eval(r)/51)*.2;g=(eval(g)/51)*.2;b=(eval(b)/51)*.2;
+	Max=(eval(r)>=eval(g))?eval(r):eval(g);if(eval(b)>eval(Max))Max=eval(b);
+	Min=(eval(r)<=eval(g))?eval(r):eval(g);if(eval(b)<eval(Min)) Min=eval(b);
+	HSL.L=(eval(Max)+eval(Min))/2;
+	if(eval(Max)==eval(Min)) {HSL.S=0;HSL.H=0;} 
+	else 
+	{
+		if(HSL.L < .5)HSL.S=(eval(Max)-eval(Min))/(eval(Max)+eval(Min));
+		if(HSL.L >= .5)HSL.S=(eval(Max)-eval(Min))/(2-eval(Max)-eval(Min));
+		if(r==Max)HSL.H=(eval(g)-eval(b))/(eval(Max)-eval(Min));
+		if(g==Max)HSL.H=2+((eval(b)-eval(r))/(eval(Max)-eval(Min)));
+		if(b==Max)HSL.H=4+((eval(r)-eval(g))/(eval(Max)-eval(Min)));
+	}
+	HSL.H=Math.round(HSL.H*60);if(HSL.H<0) HSL.H += 360;
+	if(HSL.H>=360) HSL.H -= 360;HSL.S=Math.round(HSL.S*100);
+	HSL.L=Math.round(HSL.L*100);
+}
+function DrawPalette()
+{
+	var r,g,b=255;
+	document.write('<div id="palette"><table cellpadding="0" cellspacing="1"><tr>');
+	for(r=255;r>=0;r-=51)
+	{
+		for(g=255;g>=0;g-=51)
+		{
+			for(b=255;b>=0;b-=51)
+			{
+				tR=HEXCodes[255-r];tG=HEXCodes[255-g];tB=HEXCodes[255-b];//this.style.backgroundColor
+				document.write('<td style="height:11px;width:11px;background:#'+tR+tG+tB+'" onClick="SetHex2(\'#'+tR+tG+tB+'\');return false;"></td>');
+			}
+		}
+		if(r!=0) document.write('</tr><tr>');
+	}
+	document.write('</tr></table></div>');
+}
+function SetHex2(clr){
+	$('#xdefcolor').val($('#w0').css('background-color'));
+	$('#xcolor').val(clr);
+	$('#form_color').submit();
+}
+function refresh_frame(){$('#codes').submit();}
+
+
+function rgb2hex(rgb){
+ rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+ return "#" +
+  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2);
+}
+
+$(document).ready(function(){$(".color").click(function(){clr=$(this).css('background-color');SetHex2(rgb2hex(clr));});
+});
+</script>
+<style>
+html{height:100%;background:transparent;}
+
+input.button{display: inline-block;*display: inline;padding: 2px 12px;margin:0;
+font: 14px/18px "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+color: #333333;text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle;text-decoration:none;cursor: pointer;background-color: #f5f5f5;background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);border: 1px solid #bbbbbb;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);border-bottom-color: #a2a2a2;
+border-radius: 4px;box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);}
+input.button:hover{color: #333333;background: #e6e6e6;}
+.color{height:19px;width:71px;cursor:pointer;}
+.border{height:19px;width:68px;}
+#sc{position:absolute;top:91px;left:0px;}
+#notice{position:absolute;top:220px;left:0px;}
+#wheel{height:87px;width:424px;position:absolute;top:106px;left:153px}
+#palette{position:absolute;top:16px;left:8px;cursor:pointer;}
+#picker{position:absolute;top:15px;left:442px}
+#cbsc{position:absolute;left:-144px;top:0px;}
+#cbl0{position:absolute;left:0px;top:0px;}
+#cbsc .color{width:143px;height:79px;}
+#cbl11{position:absolute;left:0px;top:20px;}
+#cbl10{position:absolute;left:0px;top:40px;}
+#cbl9{position:absolute;left:0px;top:60px;}
+#cbl1{position:absolute;left:72px;top:0px;}
+#cblm1{position:absolute;left:72px;top:20px;}
+#cblm4{position:absolute;left:72px;top:40px;}
+#cbl8{position:absolute;left:72px;top:60px;}
+#cbl2{position:absolute;left:144px;top:0px;}
+#cblm2{position:absolute;left:144px;top:20px;}
+#cblm3{position:absolute;left:144px;top:40px;}
+#cbl7{position:absolute;left:144px;top:60px;}
+#cbl3{position:absolute;left:216px;top:0px;}
+#cbl4{position:absolute;left:216px;top:20px;}
+#cbl5{position:absolute;left:216px;top:40px;}
+#cbl6{position:absolute;left:216px;top:60px;}
+#opaci{padding-left:9px;margin-top:5px;height:13px;position:relative;width:431px;}
+.opa{position:absolute;top:0px;height:12px;width:20px;}
+.opa a{display:block;height:12px;width:20px;}
+#op100{right:0;background:#000000;}
+#op95{right:21px;background:#0c0c0c;}
+#op90{right:42px;background:#191919;}
+#op85{right:63px;background:#262626;}
+#op80{right:84px;background:#333333;}
+#op75{right:105px;background:#404040;}
+#op70{right:126px;background:#4c4c4c;}
+#op65{right:147px;background:#595959;}
+#op60{right:168px;background:#666666;}
+#op55{right:189px;background:#737373;}
+#op50{right:210px;background:#7f7f7f;}
+#op45{right:231px;background:#8c8c8c;}
+#op40{right:252px;background:#999999;}
+#op35{right:273px;background:#a6a6a6;}
+#op30{right:294px;background:#b2b2b2;}
+#op25{right:315px;background:#bfbfbf;}
+#op20{right:336px;background:#cccccc;}
+#op15{right:357px;background:#d9d9d9;}
+#op10{right:378px;background:#e5e5e5;}
+#op5{right:399px;background:#f2f2f2;}
+#oparrow{position:absolute;color:red;font:14px tahoma;top:-10px;right:7px;}
+.pattern_image{width:42px;margin: 0 2px 2px 0;}
+#navBox2{position:relative;width:450px;height:187px;}
+#dlbtns{padding:6px;}
+#patterns{padding-top:8px;padding-left:9px;overflow:auto;}
+#patterns a{width:44px;height:44px;display:inline-block;}
+.inner, .inner_custom,.inner_head_custom,.inner_head{border-bottom:1px solid #c0c0c0;background:#ffffff;color:#333333;font: 12pt/16px Georgia,Times New Roman,Times,serif;font-style:italic;position:relative;padding-left:3px;margin: 0px;}
+.inner_head_custom,.inner_head{border-bottom:1px solid #808080;}
+.notes{color: #990000;font: 8pt Georgia,Times New Roman,Times,serif;padding-left:5px;background:#FFFFFF;}
+.input1{color:black;background:white;border:1px solid black;}
+.example{max-height:320px;overflow:auto;padding:16px;background: #FFFFFF;}
+
+</style>
+
+</head>
+<body style="padding:3px;height:100%;background:#FFFFFF;" onload="SetHex('#C48446');">
+<div style="padding:10px;top:10px;">
+<div class="inner_head">DIV PREVIEW</div>		
+</form>
+<div class="example">
+	<div id="div_2" style="position:relative;width:703px;border-radius: 6px;" class="div" align="left">
+		<div class="div_col dc_0" style="overflow:auto; background: #A5A5A5; width:492px;" align="left">
+			<div style="padding:5px;"><br />
+</div>
+		</div>
+		<div class="div_col dc_1" style="border-left: 2px solid rgba(197,197,197,0.00); background: #A5A5A5; width:209px;" align="left">
+			<div style="padding:5px;"><br />
+</div>
+		</div>
+	</div>
+
+<br>
+</div>
+<form name="codes" id="codes">
+<div id="navBox">
+<span class="rvst8"></span>
+	<div class="inner_head">PATTERNS (CSS)</div>
+	<div id="patterns"><a href="selectheader=pattern28_h24_f15_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern28_h24_f15_0.png"></a>&nbsp;<a href="selectheader=pattern00_h7_f7_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern00_h7_f7_0.png"></a>&nbsp;<a href="selectheader=pattern01_h7_f7_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern01_h7_f7_0.png"></a>&nbsp;<a href="selectheader=pattern02_h11_f13_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern02_h11_f13_0.png"></a>&nbsp;<a href="selectheader=pattern03_h11_f13_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern03_h11_f13_0.png"></a>&nbsp;<a href="selectheader=pattern20_h18_f17_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern20_h18_f17_0.png"></a>&nbsp;<a href="selectheader=pattern03_h9_f9_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern03_h9_f9_0.png"></a>&nbsp;<a href="selectheader=pattern04_h10_f10_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern04_h10_f10_0.png"></a>&nbsp;<a href="selectheader=pattern06_h7_f7_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern06_h7_f7_0.png"></a>&nbsp;<a href="selectheader=pattern09_h15_f7_10.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern09_h15_f7_10.png"></a>&nbsp;<a href="selectheader=pattern16_h18_f18_0_strmid.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern16_h18_f18_0_strmid.png"></a>&nbsp;<a href="selectheader=pattern18_h29_f7_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern18_h29_f7_0.png"></a>&nbsp;<a href="selectheader=pattern24_h12_f4_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern24_h12_f4_0.png"></a>&nbsp;<a href="selectheader=pattern27_h24_f15_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern27_h24_f15_0.png"></a>&nbsp;<a href="selectheader=pattern25_h21_f12_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern25_h21_f12_0.png"></a>&nbsp;<a href="selectheader=pattern27_h24_f16_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern27_h24_f16_0.png"></a>&nbsp;<a href="selectheader=pattern28_h20.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern28_h20.png"></a>&nbsp;<a href="selectheader=pattern29.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern29.png"></a>&nbsp;<a href="selectheader=pattern23_h18_f26_lf8_rf35_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern23_h18_f26_lf8_rf35_0.png"></a>&nbsp;<a href="selectheader=pattern22_h18_f26_lf8_rf35_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern22_h18_f26_lf8_rf35_0.png"></a>&nbsp;<a href="selectheader=pattern30.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern30.png"></a>&nbsp;<a href="selectheader=bubble.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\bubble.png"></a>&nbsp;</div>
+	<div class="inner_head">PATTERNS (IMAGES)</div>
+	<div class="notes">notice: div background is fixed to div width, if you change width of div later you will have to refresh div background</div>
+	<div id="patterns">
+ 		<input type="button" class="button" value="&#10008" onClick="javascript:document.location.href='clearblocks';"
+		 style="width:40px;height:40px;border:1px dashed #ccc;display:inline;margin:0;padding:0;vertical-align:top;font: bold 26px tahoma"
+		 title="remove image pattern">
+		<input type="hidden" class="input1" name="hex" value="000000">
+		<a href="selectheader=pattern04_h18_f18_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern04_h18_f18_0.png"></a>&nbsp;<a href="selectheader=pattern05_h18_f18_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern05_h18_f18_0.png"></a>&nbsp;<a href="selectheader=pattern05_h18_f8_lf20_rf20_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern05_h18_f8_lf20_rf20_0.png"></a>&nbsp;<a href="selectheader=pattern08_h22_f12_rf22_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern08_h22_f12_rf22_0.png"></a>&nbsp;<a href="selectheader=pattern11_h16_f47_lf8_rf47_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern11_h16_f47_lf8_rf47_0.png"></a>&nbsp;<a href="selectheader=pattern13_h18_f18_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern13_h18_f18_0.png"></a>&nbsp;<a href="selectheader=pattern15_h20_f20_10.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern15_h20_f20_10.png"></a>&nbsp;<a href="selectheader=pattern17_h20_f15_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern17_h20_f15_0.png"></a>&nbsp;<a href="selectheader=pattern19_h21_f11_lf13_tiletop_tilebottom_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern19_h21_f11_lf13_tiletop_tilebottom_0.png"></a>&nbsp;<a href="selectheader=pattern21_h30_f30_lf30_rf30_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern21_h30_f30_lf30_rf30_0.png"></a>&nbsp;<a href="selectheader=pattern22_h31_f31_lf31_rf31_0.png"><img class="pattern_image" src="C:\Program Files (x86)\EzGenerator4\patterns\headings\pattern22_h31_f31_lf31_rf31_0.png"></a>&nbsp;
+	</div>
+	<div class="notes">pattern opacity:</div>
+	<div id="opaci">
+		<div class="opa" id="op100"><a href="selectopa=100">&nbsp;</a></div>
+		<div class="opa" id="op95"><a href="selectopa=95">&nbsp;</a></div>
+		<div class="opa" id="op90"><a href="selectopa=90">&nbsp;</a></div>
+		<div class="opa" id="op85"><a href="selectopa=85">&nbsp;</a></div>
+		<div class="opa" id="op80"><a href="selectopa=80">&nbsp;</a></div>
+		<div class="opa" id="op75"><a href="selectopa=75">&nbsp;</a></div>
+		<div class="opa" id="op70"><a href="selectopa=70">&nbsp;</a></div>
+		<div class="opa" id="op65"><a href="selectopa=65">&nbsp;</a></div>
+		<div class="opa" id="op60"><a href="selectopa=60">&nbsp;</a></div>
+		<div class="opa" id="op55"><a href="selectopa=55">&nbsp;</a></div>
+		<div class="opa" id="op50"><a href="selectopa=50">&nbsp;</a></div>
+		<div class="opa" id="op45"><a href="selectopa=45">&nbsp;</a></div>
+		<div class="opa" id="op40"><a href="selectopa=40">&nbsp;</a></div>
+		<div class="opa" id="op35"><a href="selectopa=35">&nbsp;</a></div>
+		<div class="opa" id="op30"><a href="selectopa=30">&nbsp;</a></div>
+		<div class="opa" id="op25"><a href="selectopa=25">&nbsp;</a></div>
+		<div class="opa" id="op20"><a href="selectopa=20">&nbsp;</a></div>
+		<div class="opa" id="op15"><a href="selectopa=15">&nbsp;</a></div>
+		<div class="opa" id="op10"><a href="selectopa=10">&nbsp;</a></div>
+		<div class="opa" id="op5"><a href="selectopa=5">&nbsp;</a></div>
+		<div id="oparrow">&#9830;</div>	
+	</div>
+	<div id="navBox2">
+		<div class="notes">select pattern color:</div>
+		<div id="picker"><a href="changecolor"><img src="file:///C:/Program Files (x86)/EzGenerator4/webtemplates/___shared/images/color.png" alt=""></a></div>		
+		<script type="text/javascript">DrawPalette();</script>
+		<div id="sc" class="notes">selected color:</div>
+		<div id="wheel">
+		  <div id="cbsc" class="cbl"><div class="border"><div id="x0" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl0" class="cbl"><div class="border"><div id="w0" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl1" class="cbl"><div class="border"><div id="w1" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl2" class="cbl"><div class="border"><div id="w2" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl3" class="cbl"><div class="border"><div id="w3" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl4" class="cbl"><div class="border"><div id="w4" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl5" class="cbl"><div class="border"><div id="w5" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl6" class="cbl"><div class="border"><div id="w6" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl7" class="cbl"><div class="border"><div id="w7" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl8" class="cbl"><div class="border"><div id="w8" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl9" class="cbl"><div class="border"><div id="w9" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl10" class="cbl"><div class="border"><div id="w10" class="color" >&nbsp;</div></div></div>
+		  <div id="cbl11" class="cbl"><div class="border"><div id="w11" class="color" >&nbsp;</div></div></div>
+		  <div id="cblm1" class="cbl"><div class="border"><div id="m1" class="color" >&nbsp;</div></div></div>
+		  <div id="cblm2" class="cbl"><div class="border"><div id="m2" class="color" >&nbsp;</div></div></div>
+		  <div id="cblm3" class="cbl"><div class="border"><div id="m3" class="color" >&nbsp;</div></div></div>
+		  <div id="cblm4" class="cbl"><div class="border"><div id="m4" class="color" >&nbsp;</div></div></div>
+		</div>	
+	</div>
+	<div id="colorInput">
+	<form name="codes" id="codes">	
+	<div id="dlbtns">
+		<input type="button" class="button" value="Lighten" onClick="lighter();">
+		<input type="button" class="button" value="Darken" onClick="darker();">
+	</div>
+	</form>
+</div>
+</div>
+<form name="frm" action="" id="form_color"><input type="hidden" id="xdefcolor" name="defcolor" value=""><input type="hidden" id="xcolor" name="color" value=""></form>
+<!--eop-->
+</body></html>

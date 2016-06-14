@@ -1,0 +1,91 @@
+<html>
+	
+		<style>
+ 			body {
+              			  background-image: url(room.jpg);            
+               			  background-size: 100%;
+              			  background-origin: content;
+             			}
+ 		      button{
+				color: blue;
+				background-color: yellow;
+				border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 22px;
+				text-align: left;
+				background-border:black;
+				}
+
+			h0.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				color:#000066 ;
+				text-align: justify;
+				font-weight: bold;
+				}
+			h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#555557;
+				background-color: green;
+				padding-top: 15px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+
+				}				
+				 
+	</style>
+
+	<head>
+		<title>ROOM ASSIGNING FORM</title>
+	</head>
+
+	  <h1 class="thick"><center>ROOM ASSIGNING FORM</center></h1> 
+		
+		<form name="Room_post" action="Room_post.php" method="post">
+		<table>
+
+			<tr><br>
+				<br><br>
+			<td><h0 class="thick">Room No</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Room_No"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Type of the room</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Type"></h0></td>
+			</tr>
+
+                        <tr>
+                        <td><h0 class="thick">Ward No</h0></td>
+                        <td>:   <h0 class="thick"><input type="text" name="ward"></h0></td>
+                        </tr>
+
+
+			<tr>
+			<td><h0 class="thick">Patient's ID</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="patient"></h0></td>
+			</tr>
+
+
+			<tr>
+			<td></td>	<td><br><h0 class="thick"><button type="submit">Submit</button></h0></td>
+			</tr>
+
+		</table>
+			<div align=justify><h0><button type="button"  
+				onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+
+			</form>
+	</body>
+</html>

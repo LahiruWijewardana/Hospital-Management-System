@@ -1,0 +1,82 @@
+<html>
+		<style>
+ 			body {
+              			  background-image: url(lab.jpg);            
+               			  background-size: 100%;
+             			}
+ 		      button{
+				color: black;
+				background-color:#778899 ;
+				border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				text-align: left;
+				background-border:black;
+				}
+
+			h0.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				color:#8B0000  ;
+				text-align: justify;
+				font-weight: bold;
+				}
+			h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#555557;
+				background-color:#2E8B57;
+				padding-top: 15px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+
+				}				
+				 
+	</style>
+
+	
+	<head>
+		<title>LAB FORM</title>
+	</head>
+
+	<body>
+		<h1 class="thick"><center>LAB FORM</center></h1> 
+
+		<form name="Lab_post" action="Lab_post.php" method="post">
+		<table>
+
+			<tr>
+			<td><h0 class="thick">Lab No</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="lab_no"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Lab Name</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="lab_name"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Head of the Lab (ID)</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Doc_ID"></h0></td>
+			</tr>
+
+			<tr>
+			<td></td>	<td><h0 class="thick"><input type="submit" value="Submit"></h0></td>
+			</tr>
+
+		</table>
+			<div align=justify><h0><button type="button"  
+					onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+		<style>
+ 			body {
+              			  background-image: url(inpatient2.jpg);            
+               			  background-size: 100%;
+              			  background-origin: content;
+				 opacity:20;
+            			}
+ 		      button{
+				color: blue;
+				background-color: yellow;
+				border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 22px;
+				text-align: left;
+				background-border:black;
+				}
+
+			h0.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				color:black;
+				text-align: justify;
+				font-weight: bold;
+				}
+			h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#827E7F;
+				background-color: #978EAB;
+				padding-top: 25px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+
+				}				
+				 
+	</style>
+
+
+	<head>
+		<title>IN PATIENT FORM</title>
+	</head>
+
+	<body>
+		<h1 class="thick"><center>IN PATIENT FORM</center></h1><br>
+
+		<form name="In_Patient_post" action="In_Patient_post.php" method="post">
+		<table>
+
+			<tr>
+			<td><h0 class="thick">Ward No</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Ward_No"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Admition Date(YYYY/MM/DD)</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="admition"></h0></td>
+			</tr>
+
+                        <tr>
+                        <td><h0 class="thick">Discharge Date(YYYY/MM/DD)</h0></td>
+                        <td>:   <h0 class="thick"><input type="text" name="discharge"></h0></td>
+                        </tr>
+
+
+			<tr>
+			<td><h0 class="thick">Patient's ID</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="patient"></h0></td>
+			</tr>
+			
+			<tr><br>
+				<br><br>
+			<td><h0 class="thick">Room No</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Room_No"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Type of the room</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Type"></h0></td>
+			</tr>
+
+        
+			<tr>
+			<td></td>	<td><h0 class="thick"><input type="submit" value="Submit"></h0></td>
+			</tr>
+
+		</table>
+			<div align=justify><h0><button type="button"  
+				onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+		</form>
+	</body>
+</html>

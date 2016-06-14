@@ -1,0 +1,99 @@
+<html>
+		<style>
+ 			body {
+              			  background-image: url(labreport.jpg);            
+               			  background-size: 42.5%;
+              			  background-origin: content;
+             			}
+ 		      button{
+				color: blue;
+				background-color: yellow;
+				border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 22px;
+				text-align: left;
+				background-border:black;
+				}
+
+			h0.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				color:black;
+				text-align: justify;
+				font-weight: bold;
+				}
+			h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#827E7F;
+				background-color:#15E8B3;
+				padding-top: 25px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+
+				}				
+				 
+	</style>
+
+
+	<head>
+		<title>LAB REPORT</title>
+	</head>
+
+	<body>
+		<h1 class="thick"><center>LAB REPORT</center></h1><br>
+
+		<form name="Lab_Report_post" action="Lab_Report_post.php" method="post">
+		<table>
+
+			<tr>
+			<td><h0 class="thick">Report No</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Report_No"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Category</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="category"></h0></td>
+			</tr>
+
+                        <tr>
+                        <td><h0 class="thick">Date(YYYY/MM/DD)</h0></td>
+                        <td>:   <h0 class="thick"><input type="text" name="date"></h0></td>
+                        </tr>
+
+
+			<tr>
+			<td><h0 class="thick">Patient's ID</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="patient"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Doctor's ID</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="doc"></h0></td>
+			</tr>
+
+			<tr>			
+			<td><h0 class="thick">Description</td>
+			<td> 	<h0 class="thick"><textarea name="comments" id="comments"></textarea></h0></td>	
+			</tr>
+
+			<tr>
+			<td></td>	<td><h0 class="thick"><input type="submit" value="Submit"></h0></td>
+			</tr>
+
+		</table>
+			<div align=justify><h0><button type="button"  
+				onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+		</form>
+	</body>
+</html>

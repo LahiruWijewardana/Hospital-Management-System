@@ -1,0 +1,5 @@
+body{visibility:hidden;width:1000px;}
+#xm2{visibility:visible;margin-top:0;top:0;left:0;}
+#container,#main,#sheet,#inner_container{padding:0;margin:0;left:0;top:0;}
+#topbar,#highbar,.art-header,.art-bar,.art-nav{display:none;}
+.noprint{display:none;}

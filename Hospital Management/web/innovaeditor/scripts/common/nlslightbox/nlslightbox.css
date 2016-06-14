@@ -1,0 +1,28 @@
+.box_container {z-index:2001;border:#000000 1px solid;text-align:left;padding-top:30px;box-shadow: 0 0 2px 2px #989898;}
+.content_area {font-family:Arial;line-height:12pt;font-size:11pt;position:absolute;top:0px;left:0px;background:#ffffff;color:#000;
+    width:100%;height:100%;overflow:auto;overflow:hidden;}
+.content_area a, .content_area a:link, .content_area a:visited {color:#000}
+.content_area2 {font-family:Arial;line-height:12pt;position:absolute;top:0px;left:0px;background:#fff;color:#000;width:100%;height:100%;overflow:hidden;}
+.content_area2 a, .content_area2 a:link, .content_area2 a:visited {color:#000}
+.box_content {
+    /* width:100%; */   
+}
+.box_title {line-height:12pt;cursor:move;position:absolute;left:-1px;top:-1px;overflow:hidden;z-index:1000;width:100%;height:30px;
+		background:#515151;
+    background-image: -moz-linear-gradient(top, #515151, #000000);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#515151), to(#000000));
+    background-image: -o-linear-gradient(top, #515151, #000000);
+    background-image: linear-gradient(top, #515151, #000000);
+border:#000000 1px solid;border-bottom:none;}
+.title_text{font: bold 8pt verdana,arial;color:#ffffff;margin:8px 20px 1px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.box_loading{background:url(images/animated_progress.gif) center center no-repeat;z-index:1005;top:0px; left:0px;width:100%;height:100%;}
+.box_close{position:absolute;background: url(images/closebox.png) no-repeat 0 0;width:30px;height:30px;top:1px;right:0px; cursor:pointer;z-index:1001;}
+a.box_prev,a.box_next{position: absolute;background: url(images/blank.gif);width: 40%;height: 100%;bottom: 0px;cursor: pointer;z-index: 1002;outline:none;}
+a.box_prev {left: 0px;}
+a.box_next {right: 0px;}
+a.box_prev:hover{background: url(images/prev.gif) 0% 100% no-repeat ;}
+a.box_next:hover{background:url(images/next.gif) 100% 100% no-repeat;}
+.b_tlc, .b_trc, .b_blc, .b_brc {position:absolute;background-repeat: no-repeat;}
+.box_overlay {position:absolute;background-color:#333333;z-index:900;filter: alpha(opacity = 25);opacity:0.25;top:0px;left:0px;}
+
+

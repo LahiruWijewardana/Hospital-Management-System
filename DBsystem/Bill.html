@@ -1,0 +1,135 @@
+<html>
+
+	<style>
+ 		       body {
+              			  background-image: url(cash.jpg);            
+               			  background-size: 115%;
+              			  background-origin: content;
+             			}
+ 		    button{
+				color: blue;
+				background-color: yellow;
+				background-border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 20.2px;
+				text-align: left;
+				}
+		       	  h0{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 24px;
+				text-align: left;
+				}
+	         h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#555557;
+				background-color: Orange;
+				padding-top: 15px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+				}
+	 			 
+	</style>
+
+	<head>
+		<title>BILL FORM</title>
+	</head>
+
+	 <h1 class="thick"><center>BILL PAYMENTS</center></h1> 
+       	<br>
+	<br>
+		<form name="Bill_post" action="Bill_post.php" method="post">
+		<table>
+
+			<tr>
+			<td><h0>Bill No</h0></td>
+			<td>:	<h0><input type="text" name="Bill_No"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0>Patient's ID</h0></td>
+			<td>:	<h0><input type="text" name="patient"></h0></td>
+			</tr>
+
+
+			<tr>
+			<td><h0>Doctor's ID</h0></td>
+			<td>:	<h0><input type="text" name="Doc"></h0></td>
+			</tr>
+
+                        <tr>
+                        <td><h0>Number of days Admited</h0></td>
+                        <td>:   <h0><input type="text" name="days"></h0></td>
+                        </tr>
+
+
+			<tr>
+			<td><h0>Lab Charges</h0></td>
+			<td>:	<h0><input type="text" name="Lab"></h0></td>
+			</tr>
+
+                        <tr>
+                        <td><h0>Doctor Charges</h0></td>
+                        <td>:   <h0><input type="text" name="Doc_C"></h0></td>
+                        </tr>
+
+                        <tr>
+                        <td><h0>Nursing Charges</h0></td>
+                        <td>:   <h0><input type="text" name="Nursing"></h0></td>
+                        </tr>
+
+                        <tr>
+                        <td><h0>Room Charges</h0></td>
+                        <td>:   <h0><input type="text" name="Room"></h0></td>
+                        </tr>
+
+                        <tr>
+                        <td><h0>Medicine Charges</h0></td>
+                        <td>:   <h0><input type="text" name="Medicine"></h0></td>
+                        </tr>
+
+                        <tr>
+                        <td><h0>Operation Charges</h0></td>
+                        <td>:   <h0><input type="text" name="Operation"></h0></td>
+                        </tr>
+
+                        <tr>
+                        <td><h0>Total Charge</h0></td>
+                        <td>:   <h0><input type="text" name="Total"></h0></td>
+                        </tr>
+
+
+                        <tr>
+                        <td><h0>Date(YYYY/MM/DD)</h0></td>
+                        <td>:   <h0><input type="text" name="Date"></h0></td>
+                        </tr>
+
+
+			<tr>			
+			<td><h0>Description</h0></td>
+			<td> 	<h0><textarea name="comments" id="comments"></textarea></h0></td>	
+			</tr>
+
+			<tr>
+			<td></td>	<td><h1><button type="submit">Pay</button></h1></td>
+			</tr>
+
+			
+
+		</table>
+			<div align=justify><h0><button type="button"  
+				onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+
+		</form> 
+	</body>
+</html>

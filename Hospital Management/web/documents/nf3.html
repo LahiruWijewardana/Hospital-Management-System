@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" href="../documents/textstyles_nf.css" rel="stylesheet">
+<title></title>
+<script src="../jquery.js" type="text/javascript"></script>
+<script src="../documents/scripts.js" type="text/javascript"></script>
+<!--scripts-->
+
+<script type="text/javascript">
+function run(comm){par=document.getElementById('xcode').value;document.frm.action.value=comm;document.frm.param.value=par;document.frm.submit();}
+
+</script>
+<!--endscripts-->
+<style type="text/css">
+html,body{height:100%;width:100%;margin:0;padding:0;background:#FFFFFF;}
+.relh{display: inline-block;overflow: hidden;position: relative;}
+.abs{position:absolute;top:0;left:0;}
+img{border:0}
+.clear{clear:left;}
+#ifr{height:150px;width:100%;border:0;}
+.example{padding:6px;background: #FFFFFF;}
+.input1{color:black;font: 11px tahoma;border:1px solid #c0c0c0;background:white;margin-bottom:4px;}
+.innerform td,.innerform div,.ctrl_text{color:black;font: 11px tahoma;}
+input.button{display: inline-block;*display: inline;padding: 2px 12px;margin:0;
+font: 14px/18px "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+color: #333333;text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle;text-decoration:none;cursor: pointer;background-color: #f5f5f5;background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);border: 1px solid #bbbbbb;border-color: #e6e6e6 #e6e6e6 #bfbfbf;border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);border-bottom-color: #a2a2a2;
+border-radius: 4px;box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);}
+input.button:hover{color: #333333;background: #e6e6e6;}
+.inner, .inner_custom,.inner_head_custom,.inner_head{border-bottom:1px solid #c0c0c0;background:#ffffff;color:#333333;font: 12pt/16px Georgia,Times New Roman,Times,serif;font-style:italic;position:relative;padding-left:3px;margin: 0px;}
+.inner_head_custom,.inner_head{border-bottom:1px solid #808080;margin-bottom:8px;}
+.brd{border-top:1px solid #808080;height:8px;padding-bottom:8px;}
+#caption{height:15px;color:black;font: 12px/16px Georgia,Times New Roman,Times;}
+%INLINE_CSS%
+</style>
+</head>
+<body >
+<form name="frm" method="post" action=""><input type="hidden" name="action" value=""><input type="hidden" name="param" value=""></form>
+<div style="padding:6px;">
+
+<link type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+function send_size()
+{
+	h=$('.css_button').outerHeight(false);w=$('.css_button').outerWidth(false);
+	document.location='data.html?data&h='+h+'&w='+w+'&=u=1';
+}
+$(document).ready(function(){ 
+	send_size();
+	$(".signs li").click(function(){
+	var ii=$(this).find('i');
+	if($(ii).hasClass('active')) sign_class="";
+	else sign_class=$(ii).attr('class');
+	$(ii).toggleClass('active');
+	document.location='sign.html?data&id='+sign_class+'&=u=1';
+	});
+	$(".shapes").click(function(){document.location='shapes.html?data&css='+$(this).attr('style')+'&=u=1';} );
+	$(".shadows").click(function(){document.location='shadows.html?data&css='+$(this).attr('style')+'&=u=1';} );
+	$(".gradients").click(function(){document.location='gradients.html?data&css='+$(this).attr('style')+'&=u=1';} );
+	$(".sign_position").click(function(){document.location='sign_position.html?data&sign_position='+$(this).val()+'&=u=1';} );
+	$(".signs li i.none").addClass('active');	
+
+		
+});
+	
+</script>
+<style>
+body{overflow:hidden;min-width:100px;}
+.example{padding: 16px 10px;}
+.signs{list-item-style:none}
+.signs li{cursor:pointer;font-size:14px;display:inline-block;height:18px;width:18px;color:black;}
+.signs li:hover,.signs li i.active{color:orange;}
+.shadows,.shapes{cursor:pointer;border:1px solid #DA7C0C;background-image: -webkit-linear-gradient(top, #FAA51A, #F47A20);width:60px;height:24px;display:inline-block;margin-right:5px;margin-bottom:4px;}
+.gradients{cursor:pointer;border:1px solid #aaa;width:24px;height:24px;display:inline-block;margin-right:5px;margin-bottom:4px;}
+.shape_2{border-radius:4px;}
+.bpr_1{background: #1E5799;background: -moz-linear-gradient(top,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);background: -webkit-linear-gradient(top,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);background: -o-linear-gradient(top,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);background: -ms-linear-gradient(top,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);background: linear-gradient(to bottom,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);-svg-background: linear-gradient(top,#1E5799 0%,#2989D8 50%,#207CCA 51%,#7DB9E8 100%);box-shadow: 1px 1px 2px rgba(0,0,0,0.17);border-radius: 6px;padding:6px;margin: 0px 5px 0px 0px;}a.bpr_1,a.bpr_1:visited,input.bpr_1,button.bpr_1{font-weight:bold;font-family:Arial, Helvetica, sans-serif;color:#FEFDFC;text-decoration:none;}.bpr_1.hover,.bpr_1:hover{background: #FFFFFF;}a.bpr_1:hover,input.bpr_1:hover,button.bpr_1:hover{color:#949494;}
+
+</style>
+<div class="inner_head">SHAPES</div>
+	<div class="shapes shape_1" style="border-radius:0px;"></div>
+	<div class="shapes shape_2" style="border-radius:4px;"></div>
+	<div class="shapes shape_3" style="border-radius:8px;"></div>
+	<div class="shapes shape_4" style="border-radius:20px;"></div>
+	<div class="shapes shape_5" style="border-radius: 0px 10px 0 10px;"></div>
+	<div class="shapes shape_6" style="border-radius: 2px 8px 8px 2px;"></div>
+<div class="inner_head">SHADOWS</div>
+	<div class="shadows shape_2 shadow_1" style=""></div>
+	<div class="shadows shape_2 shadow_2" style="box-shadow: 0px 0px 3px rgba(0,0,0,0.6);"></div>
+	<div class="shadows shape_2 shadow_3" style="box-shadow: 1px 1px 2px rgba(0,0,0,0.4);"></div>
+	<div class="shadows shape_2 shadow_4" style="box-shadow: 0 0 2px 2px rgba(255,255,255,0.3) inset"></div>
+	<div class="shadows shape_2 shadow_5" style="box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset;"></div>
+<div class="inner_head">GRADIENTS</div>
+	<div class="gradients shape_2" style="background:#FAA51A"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(250,165,26,0.65) 0%,rgba(244,122,32,0) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%);"></div>
+
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top,#fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(242,246,248,1) 0%,rgba(216,225,231,1) 50%,rgba(181,198,208,1) 51%,rgba(224,239,249,1) 100%);"></div>
+
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%);"></div>
+
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 50%,rgba(114,170,0,1) 51%,rgba(158,203,45,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(164,179,87,1) 0%,rgba(117,137,12,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(243,226,199,1) 0%,rgba(193,158,103,1) 50%,rgba(182,141,76,1) 51%,rgba(233,212,179,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%);"></div>
+  <div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(248,80,50,1) 0%,rgba(241,111,92,1) 50%,rgba(246,41,12,1) 51%,rgba(231,56,39,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)"></div>
+  <div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 94%,rgba(40,52,59,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(19,19,19,1) 100%);"></div>
+	<div class="gradients shape_2" style="background: -webkit-linear-gradient(top, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%);"></div>
+
+<div class="inner_head">Button Sign</div>
+<div class="edit">
+<ul class="signs">
+<li><i title="adjust" class="icon-adjust"></i></li>
+<li><i title="anchor" class="icon-anchor"></i></li>
+<li><i title="archive" class="icon-archive"></i></li>
+<li><i title="asterisk" class="icon-asterisk"></i></li>
+<li><i title="ban-circle" class="icon-ban-circle"></i></li>
+<li><i title="bar-chart" class="icon-bar-chart"></i></li>
+<li><i title="barcode" class="icon-barcode"></i></li>
+<li><i title="beaker" class="icon-beaker"></i></li>
+<li><i title="beer" class="icon-beer"></i></li>
+<li><i title="bell" class="icon-bell"></i></li>
+<li><i title="bell-alt" class="icon-bell-alt"></i></li>
+<li><i title="bolt" class="icon-bolt"></i></li>
+<li><i title="book" class="icon-book"></i></li>
+<li><i title="bookmark" class="icon-bookmark"></i></li>
+<li><i title="bookmark-empty" class="icon-bookmark-empty"></i></li>
+<li><i title="briefcase" class="icon-briefcase"></i></li>
+<li><i title="bug" class="icon-bug"></i></li>
+<li><i title="building" class="icon-building"></i></li>
+<li><i title="bullhorn" class="icon-bullhorn"></i></li>
+<li><i title="bullseye" class="icon-bullseye"></i></li>
+<li><i title="calendar" class="icon-calendar"></i></li>
+<li><i title="calendar-empty" class="icon-calendar-empty"></i></li>
+<li><i title="camera" class="icon-camera"></i></li>
+<li><i title="camera-retro" class="icon-camera-retro"></i></li>
+<li><i title="certificate" class="icon-certificate"></i></li>
+<li><i title="check" class="icon-check"></i></li>
+<li><i title="check-empty" class="icon-check-empty"></i></li>
+<li><i title="check-minus" class="icon-check-minus"></i></li>
+<li><i title="check-sign" class="icon-check-sign"></i></li>
+<li><i title="circle" class="icon-circle"></i></li>
+<li><i title="circle-blank" class="icon-circle-blank"></i></li>
+<li><i title="cloud" class="icon-cloud"></i></li>
+<li><i title="cloud-download" class="icon-cloud-download"></i></li>
+<li><i title="cloud-upload" class="icon-cloud-upload"></i></li>
+<li><i title="code" class="icon-code"></i></li>
+<li><i title="code-fork" class="icon-code-fork"></i></li>
+<li><i title="coffee" class="icon-coffee"></i></li>
+<li><i title="cog" class="icon-cog"></i></li>
+<li><i title="cogs" class="icon-cogs"></i></li>
+<li><i title="collapse" class="icon-collapse"></i></li>
+<li><i title="collapse-alt" class="icon-collapse-alt"></i></li>
+<li><i title="collapse-top" class="icon-collapse-top"></i></li>
+<li><i title="comment" class="icon-comment"></i></li>
+<li><i title="comment-alt" class="icon-comment-alt"></i></li>
+<li><i title="comments" class="icon-comments"></i></li>
+<li><i title="comments-alt" class="icon-comments-alt"></i></li>
+<li><i title="compass" class="icon-compass"></i></li>
+<li><i title="credit-card" class="icon-credit-card"></i></li>
+<li><i title="crop" class="icon-crop"></i></li>
+<li><i title="dashboard" class="icon-dashboard"></i></li>
+<li><i title="desktop" class="icon-desktop"></i></li>
+<li><i title="download" class="icon-download"></i></li>
+<li><i title="download-alt" class="icon-download-alt"></i></li>
+<li><i title="edit" class="icon-edit"></i></li>
+<li><i title="edit-sign" class="icon-edit-sign"></i></li>
+<li><i title="ellipsis-horizontal" class="icon-ellipsis-horizontal"></i></li>
+<li><i title="ellipsis-vertical" class="icon-ellipsis-vertical"></i></li>
+<li><i title="envelope" class="icon-envelope"></i></li>
+<li><i title="envelope-alt" class="icon-envelope-alt"></i></li>
+<li><i title="eraser" class="icon-eraser"></i></li>
+<li><i title="exchange" class="icon-exchange"></i></li>
+<li><i title="exclamation" class="icon-exclamation"></i></li>
+<li><i title="exclamation-sign" class="icon-exclamation-sign"></i></li>
+<li><i title="expand" class="icon-expand"></i></li>
+<li><i title="expand-alt" class="icon-expand-alt"></i></li>
+<li><i title="external-link" class="icon-external-link"></i></li>
+<li><i title="external-link-sign" class="icon-external-link-sign"></i></li>
+<li><i title="eye-close" class="icon-eye-close"></i></li>
+<li><i title="eye-open" class="icon-eye-open"></i></li>
+<li><i title="facetime-video" class="icon-facetime-video"></i></li>
+<li><i title="female" class="icon-female"></i></li>
+<li><i title="fighter-jet" class="icon-fighter-jet"></i></li>
+<li><i title="film" class="icon-film"></i></li>
+<li><i title="filter" class="icon-filter"></i></li>
+<li><i title="fire" class="icon-fire"></i></li>
+<li><i title="fire-extinguisher" class="icon-fire-extinguisher"></i></li>
+<li><i title="flag" class="icon-flag"></i></li>
+<li><i title="flag-alt" class="icon-flag-alt"></i></li>
+<li><i title="flag-checkered" class="icon-flag-checkered"></i></li>
+<li><i title="folder-close" class="icon-folder-close"></i></li>
+<li><i title="folder-close-alt" class="icon-folder-close-alt"></i></li>
+<li><i title="folder-open" class="icon-folder-open"></i></li>
+<li><i title="folder-open-alt" class="icon-folder-open-alt"></i></li>
+<li><i title="food" class="icon-food"></i></li>
+<li><i title="frown" class="icon-frown"></i></li>
+<li><i title="gamepad" class="icon-gamepad"></i></li>
+<li><i title="gift" class="icon-gift"></i></li>
+<li><i title="glass" class="icon-glass"></i></li>
+<li><i title="globe" class="icon-globe"></i></li>
+<li><i title="group" class="icon-group"></i></li>
+<li><i title="hdd" class="icon-hdd"></i></li>
+<li><i title="headphones" class="icon-headphones"></i></li>
+<li><i title="heart" class="icon-heart"></i></li>
+<li><i title="heart-empty" class="icon-heart-empty"></i></li>
+<li><i title="home" class="icon-home"></i></li>
+<li><i title="inbox" class="icon-inbox"></i></li>
+<li><i title="info" class="icon-info"></i></li>
+<li><i title="info-sign" class="icon-info-sign"></i></li>
+<li><i title="key" class="icon-key"></i></li>
+<li><i title="keyboard" class="icon-keyboard"></i></li>
+<li><i title="laptop" class="icon-laptop"></i></li>
+<li><i title="leaf" class="icon-leaf"></i></li>
+<li><i title="legal" class="icon-legal"></i></li>
+<li><i title="lemon" class="icon-lemon"></i></li>
+<li><i title="level-down" class="icon-level-down"></i></li>
+<li><i title="level-up" class="icon-level-up"></i></li>
+<li><i title="lightbulb" class="icon-lightbulb"></i></li>
+<li><i title="location-arrow" class="icon-location-arrow"></i></li>
+<li><i title="lock" class="icon-lock"></i></li>
+<li><i title="magic" class="icon-magic"></i></li>
+<li><i title="magnet" class="icon-magnet"></i></li>
+<li><i title="share-alt" class="icon-mail-forward"></i></li>
+<li><i title="reply" class="icon-mail-reply"></i></li>
+<li><i title="mail-reply-all" class="icon-mail-reply-all"></i></li>
+<li><i title="male" class="icon-male"></i></li>
+<li><i title="map-marker" class="icon-map-marker"></i></li>
+<li><i title="meh" class="icon-meh"></i></li>
+<li><i title="microphone" class="icon-microphone"></i></li>
+<li><i title="microphone-off" class="icon-microphone-off"></i></li>
+<li><i title="minus" class="icon-minus"></i></li>
+<li><i title="minus-sign" class="icon-minus-sign"></i></li>
+<li><i title="minus-sign-alt" class="icon-minus-sign-alt"></i></li>
+<li><i title="mobile-phone" class="icon-mobile-phone"></i></li>
+<li><i title="money" class="icon-money"></i></li>
+<li><i title="moon" class="icon-moon"></i></li>
+<li><i title="move" class="icon-move"></i></li>
+<li><i title="music" class="icon-music"></i></li>
+<li><i title="off" class="icon-off"></i></li>
+<li><i title="ok" class="icon-ok"></i></li>
+<li><i title="ok-circle" class="icon-ok-circle"></i></li>
+<li><i title="ok-sign" class="icon-ok-sign"></i></li>
+<li><i title="pencil" class="icon-pencil"></i></li>
+<li><i title="phone" class="icon-phone"></i></li>
+<li><i title="phone-sign" class="icon-phone-sign"></i></li>
+<li><i title="picture" class="icon-picture"></i></li>
+<li><i title="plane" class="icon-plane"></i></li>
+<li><i title="plus" class="icon-plus"></i></li>
+<li><i title="plus-sign" class="icon-plus-sign"></i></li>
+<li><i title="plus-sign-alt" class="icon-plus-sign-alt"></i></li>
+<li><i title="off" class="icon-power-off"></i></li>
+<li><i title="print" class="icon-print"></i></li>
+<li><i title="pushpin" class="icon-pushpin"></i></li>
+<li><i title="puzzle-piece" class="icon-puzzle-piece"></i></li>
+<li><i title="qrcode" class="icon-qrcode"></i></li>
+<li><i title="question" class="icon-question"></i></li>
+<li><i title="question-sign" class="icon-question-sign"></i></li>
+<li><i title="quote-left" class="icon-quote-left"></i></li>
+<li><i title="quote-right" class="icon-quote-right"></i></li>
+<li><i title="random" class="icon-random"></i></li>
+<li><i title="refresh" class="icon-refresh"></i></li>
+<li><i title="remove" class="icon-remove"></i></li>
+<li><i title="remove-circle" class="icon-remove-circle"></i></li>
+<li><i title="remove-sign" class="icon-remove-sign"></i></li>
+<li><i title="reorder" class="icon-reorder"></i></li>
+<li><i title="reply" class="icon-reply"></i></li>
+<li><i title="reply-all" class="icon-reply-all"></i></li>
+<li><i title="resize-horizontal" class="icon-resize-horizontal"></i></li>
+<li><i title="resize-vertical" class="icon-resize-vertical"></i></li>
+<li><i title="retweet" class="icon-retweet"></i></li>
+<li><i title="road" class="icon-road"></i></li>
+<li><i title="rocket" class="icon-rocket"></i></li>
+<li><i title="rss" class="icon-rss"></i></li>
+<li><i title="rss-sign" class="icon-rss-sign"></i></li>
+<li><i title="screenshot" class="icon-screenshot"></i></li>
+<li><i title="search" class="icon-search"></i></li>
+<li><i title="share" class="icon-share"></i></li>
+<li><i title="share-alt" class="icon-share-alt"></i></li>
+<li><i title="share-sign" class="icon-share-sign"></i></li>
+<li><i title="shield" class="icon-shield"></i></li>
+<li><i title="shopping-cart" class="icon-shopping-cart"></i></li>
+<li><i title="sign-blank" class="icon-sign-blank"></i></li>
+<li><i title="signal" class="icon-signal"></i></li>
+<li><i title="signin" class="icon-signin"></i></li>
+<li><i title="signout" class="icon-signout"></i></li>
+<li><i title="sitemap" class="icon-sitemap"></i></li>
+<li><i title="smile" class="icon-smile"></i></li>
+<li><i title="sort" class="icon-sort"></i></li>
+<li><i title="sort-by-alphabet" class="icon-sort-by-alphabet"></i></li>
+<li><i title="sort-by-alphabet-alt" class="icon-sort-by-alphabet-alt"></i></li>
+<li><i title="sort-by-attributes" class="icon-sort-by-attributes"></i></li>
+<li><i title="sort-by-attributes-alt" class="icon-sort-by-attributes-alt"></i></li>
+<li><i title="sort-by-order" class="icon-sort-by-order"></i></li>
+<li><i title="sort-by-order-alt" class="icon-sort-by-order-alt"></i></li>
+<li><i title="sort-down" class="icon-sort-down"></i></li>
+<li><i title="sort-up" class="icon-sort-up"></i></li>
+<li><i title="spinner" class="icon-spinner"></i></li>
+<li><i title="star" class="icon-star"></i></li>
+<li><i title="star-empty" class="icon-star-empty"></i></li>
+<li><i title="star-half" class="icon-star-half"></i></li>
+<li><i title="star-half-empty" class="icon-star-half-empty"></i></li>
+<li><i title="star-half-empty" class="icon-star-half-full"></i></li>
+<li><i title="subscript" class="icon-subscript"></i></li>
+<li><i title="suitcase" class="icon-suitcase"></i></li>
+<li><i title="sun" class="icon-sun"></i></li>
+<li><i title="superscript" class="icon-superscript"></i></li>
+<li><i title="tablet" class="icon-tablet"></i></li>
+<li><i title="tag" class="icon-tag"></i></li>
+<li><i title="tags" class="icon-tags"></i></li>
+<li><i title="tasks" class="icon-tasks"></i></li>
+<li><i title="terminal" class="icon-terminal"></i></li>
+<li><i title="thumbs-down" class="icon-thumbs-down"></i></li>
+<li><i title="thumbs-down-alt" class="icon-thumbs-down-alt"></i></li>
+<li><i title="thumbs-up" class="icon-thumbs-up"></i></li>
+<li><i title="thumbs-up-alt" class="icon-thumbs-up-alt"></i></li>
+<li><i title="ticket" class="icon-ticket"></i></li>
+<li><i title="time" class="icon-time"></i></li>
+<li><i title="tint" class="icon-tint"></i></li>
+<li><i title="trash" class="icon-trash"></i></li>
+<li><i title="trophy" class="icon-trophy"></i></li>
+<li><i title="truck" class="icon-truck"></i></li>
+<li><i title="umbrella" class="icon-umbrella"></i></li>
+<li><i title="check-empty" class="icon-unchecked"></i></li>
+<li><i title="unlock" class="icon-unlock"></i></li>
+<li><i title="unlock-alt" class="icon-unlock-alt"></i></li>
+<li><i title="upload" class="icon-upload"></i></li>
+<li><i title="upload-alt" class="icon-upload-alt"></i></li>
+<li><i title="user" class="icon-user"></i></li>
+<li><i title="volume-down" class="icon-volume-down"></i></li>
+<li><i title="volume-off" class="icon-volume-off"></i></li>
+<li><i title="volume-up" class="icon-volume-up"></i></li>
+<li><i title="warning-sign" class="icon-warning-sign"></i></li>
+<li><i title="wrench" class="icon-wrench"></i></li>
+<li><i title="zoom-in" class="icon-zoom-in"></i></li>
+<li><i title="zoom-out" class="icon-zoom-out"></i></li>
+<li><i title="btc" class="icon-bitcoin"></i></li>
+<li><i title="btc" class="icon-btc"></i></li>
+<li><i title="cny" class="icon-cny"></i></li>
+<li><i title="usd" class="icon-dollar"></i></li>
+<li><i title="eur" class="icon-eur"></i></li>
+<li><i title="eur" class="icon-euro"></i></li>
+<li><i title="gbp" class="icon-gbp"></i></li>
+<li><i title="inr" class="icon-inr"></i></li>
+<li><i title="jpy" class="icon-jpy"></i></li>
+<li><i title="krw" class="icon-krw"></i></li>
+<li><i title="cny" class="icon-renminbi"></i></li>
+<li><i title="inr" class="icon-rupee"></i></li>
+<li><i title="usd" class="icon-usd"></i></li>
+<li><i title="krw" class="icon-won"></i></li>
+<li><i title="jpy" class="icon-yen"></i></li>
+<li><i title="align-center" class="icon-align-center"></i></li>
+<li><i title="align-justify" class="icon-align-justify"></i></li>
+<li><i title="align-left" class="icon-align-left"></i></li>
+<li><i title="align-right" class="icon-align-right"></i></li>
+<li><i title="bold" class="icon-bold"></i></li>
+<li><i title="columns" class="icon-columns"></i></li>
+<li><i title="copy" class="icon-copy"></i></li>
+<li><i title="cut" class="icon-cut"></i></li>
+<li><i title="eraser" class="icon-eraser"></i></li>
+<li><i title="file" class="icon-file"></i></li>
+<li><i title="file-alt" class="icon-file-alt"></i></li>
+<li><i title="file-text" class="icon-file-text"></i></li>
+<li><i title="file-text-alt" class="icon-file-text-alt"></i></li>
+<li><i title="font" class="icon-font"></i></li>
+<li><i title="indent-left" class="icon-indent-left"></i></li>
+<li><i title="indent-right" class="icon-indent-right"></i></li>
+<li><i title="italic" class="icon-italic"></i></li>
+<li><i title="link" class="icon-link"></i></li>
+<li><i title="list" class="icon-list"></i></li>
+<li><i title="list-alt" class="icon-list-alt"></i></li>
+<li><i title="list-ol" class="icon-list-ol"></i></li>
+<li><i title="list-ul" class="icon-list-ul"></i></li>
+<li><i title="paper-clip" class="icon-paper-clip"></i></li>
+<li><i title="paper-clip" class="icon-paperclip"></i></li>
+<li><i title="paste" class="icon-paste"></i></li>
+<li><i title="repeat" class="icon-repeat"></i></li>
+<li><i title="undo" class="icon-rotate-left"></i></li>
+<li><i title="repeat" class="icon-rotate-right"></i></li>
+<li><i title="save" class="icon-save"></i></li>
+<li><i title="strikethrough" class="icon-strikethrough"></i></li>
+<li><i title="table" class="icon-table"></i></li>
+<li><i title="text-height" class="icon-text-height"></i></li>
+<li><i title="text-width" class="icon-text-width"></i></li>
+<li><i title="th" class="icon-th"></i></li>
+<li><i title="th-large" class="icon-th-large"></i></li>
+<li><i title="th-list" class="icon-th-list"></i></li>
+<li><i title="underline" class="icon-underline"></i></li>
+<li><i title="undo" class="icon-undo"></i></li>
+<li><i title="unlink" class="icon-unlink"></i></li>
+<li><i title="angle-down" class="icon-angle-down"></i></li>
+<li><i title="angle-left" class="icon-angle-left"></i></li>
+<li><i title="angle-right" class="icon-angle-right"></i></li>
+<li><i title="angle-up" class="icon-angle-up"></i></li>
+<li><i title="arrow-down" class="icon-arrow-down"></i></li>
+<li><i title="arrow-left" class="icon-arrow-left"></i></li>
+<li><i title="arrow-right" class="icon-arrow-right"></i></li>
+<li><i title="arrow-up" class="icon-arrow-up"></i></li>
+<li><i title="caret-down" class="icon-caret-down"></i></li>
+<li><i title="caret-left" class="icon-caret-left"></i></li>
+<li><i title="caret-right" class="icon-caret-right"></i></li>
+<li><i title="caret-up" class="icon-caret-up"></i></li>
+<li><i title="chevron-down" class="icon-chevron-down"></i></li>
+<li><i title="chevron-left" class="icon-chevron-left"></i></li>
+<li><i title="chevron-right" class="icon-chevron-right"></i></li>
+<li><i title="chevron-sign-down" class="icon-chevron-sign-down"></i></li>
+<li><i title="chevron-sign-left" class="icon-chevron-sign-left"></i></li>
+<li><i title="chevron-sign-right" class="icon-chevron-sign-right"></i></li>
+<li><i title="chevron-sign-up" class="icon-chevron-sign-up"></i></li>
+<li><i title="chevron-up" class="icon-chevron-up"></i></li>
+<li><i title="circle-arrow-down" class="icon-circle-arrow-down"></i></li>
+<li><i title="circle-arrow-left" class="icon-circle-arrow-left"></i></li>
+<li><i title="circle-arrow-right" class="icon-circle-arrow-right"></i></li>
+<li><i title="circle-arrow-up" class="icon-circle-arrow-up"></i></li>
+<li><i title="double-angle-down" class="icon-double-angle-down"></i></li>
+<li><i title="double-angle-left" class="icon-double-angle-left"></i></li>
+<li><i title="double-angle-right" class="icon-double-angle-right"></i></li>
+<li><i title="double-angle-up" class="icon-double-angle-up"></i></li>
+<li><i title="hand-down" class="icon-hand-down"></i></li>
+<li><i title="hand-left" class="icon-hand-left"></i></li>
+<li><i title="hand-right" class="icon-hand-right"></i></li>
+<li><i title="hand-up" class="icon-hand-up"></i></li>
+<li><i title="long-arrow-down" class="icon-long-arrow-down"></i></li>
+<li><i title="long-arrow-left" class="icon-long-arrow-left"></i></li>
+<li><i title="long-arrow-right" class="icon-long-arrow-right"></i></li>
+<li><i title="long-arrow-up" class="icon-long-arrow-up"></i></li>
+<li><i title="backward" class="icon-backward"></i></li>
+<li><i title="eject" class="icon-eject"></i></li>
+<li><i title="fast-backward" class="icon-fast-backward"></i></li>
+<li><i title="fast-forward" class="icon-fast-forward"></i></li>
+<li><i title="forward" class="icon-forward"></i></li>
+<li><i title="fullscreen" class="icon-fullscreen"></i></li>
+<li><i title="pause" class="icon-pause"></i></li>
+<li><i title="play" class="icon-play"></i></li>
+<li><i title="play-circle" class="icon-play-circle"></i></li>
+<li><i title="play-sign" class="icon-play-sign"></i></li>
+<li><i title="resize-full" class="icon-resize-full"></i></li>
+<li><i title="resize-small" class="icon-resize-small"></i></li>
+<li><i title="step-backward" class="icon-step-backward"></i></li>
+<li><i title="step-forward" class="icon-step-forward"></i></li>
+<li><i title="stop" class="icon-stop"></i></li>
+<li><i title="youtube-play" class="icon-youtube-play"></i></li>
+<li><i title="adn" class="icon-adn"></i></li>
+<li><i title="android" class="icon-android"></i></li>
+<li><i title="apple" class="icon-apple"></i></li>
+<li><i title="bitbucket" class="icon-bitbucket"></i></li>
+<li><i title="bitbucket-sign" class="icon-bitbucket-sign"></i></li>
+<li><i title="btc" class="icon-bitcoin"></i></li>
+<li><i title="btc" class="icon-btc"></i></li>
+<li><i title="css3" class="icon-css3"></i></li>
+<li><i title="dribble" class="icon-dribble"></i></li>
+<li><i title="dropbox" class="icon-dropbox"></i></li>
+<li><i title="facebook" class="icon-facebook"></i></li>
+<li><i title="facebook-sign" class="icon-facebook-sign"></i></li>
+<li><i title="flickr" class="icon-flickr"></i></li>
+<li><i title="foursquare" class="icon-foursquare"></i></li>
+<li><i title="github" class="icon-github"></i></li>
+<li><i title="github-alt" class="icon-github-alt"></i></li>
+<li><i title="github-sign" class="icon-github-sign"></i></li>
+<li><i title="gittip" class="icon-gittip"></i></li>
+<li><i title="google-plus" class="icon-google-plus"></i></li>
+<li><i title="google-plus-sign" class="icon-google-plus-sign"></i></li>
+<li><i title="html5" class="icon-html5"></i></li>
+<li><i title="instagram" class="icon-instagram"></i></li>
+<li><i title="linkedin" class="icon-linkedin"></i></li>
+<li><i title="linkedin-sign" class="icon-linkedin-sign"></i></li>
+<li><i title="linux" class="icon-linux"></i></li>
+<li><i title="maxcdn" class="icon-maxcdn"></i></li>
+<li><i title="pinterest" class="icon-pinterest"></i></li>
+<li><i title="pinterest-sign" class="icon-pinterest-sign"></i></li>
+<li><i title="renren" class="icon-renren"></i></li>
+<li><i title="skype" class="icon-skype"></i></li>
+<li><i title="stackexchange" class="icon-stackexchange"></i></li>
+<li><i title="trello" class="icon-trello"></i></li>
+<li><i title="tumblr" class="icon-tumblr"></i></li>
+<li><i title="tumblr-sign" class="icon-tumblr-sign"></i></li>
+<li><i title="twitter" class="icon-twitter"></i></li>
+<li><i title="twitter-sign" class="icon-twitter-sign"></i></li>
+<li><i title="vk" class="icon-vk"></i></li>
+<li><i title="weibo" class="icon-weibo"></i></li>
+<li><i title="windows" class="icon-windows"></i></li>
+<li><i title="xing" class="icon-xing"></i></li>
+<li><i title="xing-sign" class="icon-xing-sign"></i></li>
+<li><i title="youtube" class="icon-youtube"></i></li>
+<li><i title="youtube-play" class="icon-youtube-play"></i></li>
+<li><i title="youtube-sign" class="icon-youtube-sign"></i></li>
+<li><i title="ambulance" class="icon-ambulance"></i></li>
+<li><i title="h-sign" class="icon-h-sign"></i></li>
+<li><i title="hospital" class="icon-hospital"></i></li>
+<li><i title="medkit" class="icon-medkit"></i></li>
+<li><i title="plus-sign-alt" class="icon-plus-sign-alt"></i></li>
+<li><i title="stethoscope" class="icon-stethoscope"></i></li>
+<li><i title="user-md" class="icon-user-md"></i></li>
+</ul>
+</div>
+<p>Sign position: <input class="sign_position" type="radio" name="sign_position" value="l" checked="checked"> Left <input class="sign_position" type="radio" name="sign_position" value="r"> Right </p>
+<div class="clear"></div>
+</form><br>
+
+<div class="inner_head">Button Preview</div>
+<div class="example">
+<a href="javascript:void(0);" class="css_button bpr_1">Button Caption</a>
+</div>
+<!--eop-->
+</div>
+</body></html>

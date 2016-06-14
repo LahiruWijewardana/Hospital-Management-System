@@ -1,0 +1,111 @@
+<html>
+		<style>
+ 			body {
+              			  background-image: url(patient3.jpg);            
+               			  background-size: 110%;
+              			  background-origin: content;
+             			}
+ 		      button{
+				color: blue;
+				background-color: yellow;
+				border:black;
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 22px;
+				text-align: left;
+				background-border:black;
+				}
+
+			h0.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 25px;
+				color:#5C1CF2 ;
+				text-align: justify;
+				font-weight: bold;
+				opacity:20;
+				}
+			h1.thick{
+				font-family: "Times New Roman", Times, serif;
+				font-style: italic;
+				font-size: 45px;
+				text-align: center;
+				font-weight: bold;
+				color:black;
+				border-style: solid;
+			        border-width: 5px;
+				border-color:#827E7F;
+				background-color: orange;
+				padding-top: 25px;
+				padding-right: 55px;
+    				padding-bottom: 15px;
+    				padding-left: 55px;
+
+				}				
+				 
+	</style>
+
+
+	<head>
+		<title>PATIENT FORM</title>
+	</head>
+
+	<body>
+		<h1 class="thick"><center>PATIENT FORM</center></h1><br>
+
+		<form name="Patient_post" action="Patient_post.php" method="post">
+		<table>
+
+			<tr>
+			<td><h0 class="thick">NIC No(without 'v')</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="Patient_ID"></h0></td>
+			</tr>
+		<tr></tr>
+			<tr>
+			<td><h0 class="thick">Full Name</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="fname"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Gender</h0></td>
+			<td>:	<h0 class="thick"><input type="radio" name="Male" value="Male"><h0 class="thick">Male <input type="radio" name="Male" value="Female">Female</h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Date of Birth(YYYY/MM/DD)</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="birthday"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Address</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="address"></h0></td>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Contact No:</h0></td>	<td><h0 class="thick">Mobile:</h0><input type="text" name="mobile"></h0></td>
+			<tr>
+			<td></td>		<td><h0 class="thick">Home  :<input type="text" name="home"></h0></td>
+			</tr>
+			</tr>
+
+			<tr>
+			<td><h0 class="thick">Personal Doctor ID</h0></td>
+			<td>:	<h0 class="thick"><input type="text" name="personal_doc"></h0></td>
+			</tr>
+
+			<tr>			
+			<td><h0 class="thick">Disease</h0></td>
+			<td> 	<h0 class="thick"><textarea name="comments" id="comments"></textarea></h0></td>	
+			</tr>
+
+			<tr>
+			<td></td>	<td><h0 class="thick"><input type="submit" value="Register"></h0></td>
+			</tr>
+
+		</table>
+			<div align=justify><h0><button type="button"  
+				onclick="window.location.href='Bill.html'">Main Page</button></h0>
+			</div>
+			</form>
+	</body>
+</html>

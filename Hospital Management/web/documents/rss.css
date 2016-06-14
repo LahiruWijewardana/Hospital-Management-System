@@ -1,0 +1,25 @@
+html{background: #fff;}
+a:link, a:visited, a:active{color:#595959;font-weight:bold;}
+h1 a:link, h1 a:visited, h1 a:hover, h1 a:active{
+font: small-caps 38px/38px 'Century Gothic',Arial,Helvetica,Sans-Serif;
+color:#333333;background-color:transparent;text-decoration:none;}
+a:hover {text-decoration:underline;}
+
+body#b_f{background: white;margin:0 auto;width:770px;padding:0;font: 12px Helvetica, Arial, Sans-serif;color:#666;}
+body#b_f p{margin-bottom:1em;}
+body#b_f div#bodycontainer {margin:0 auto;width:770px;padding:0;}
+div#bodycontainer #bannerblock {margin: 0 20px 1.5em 20px;padding-top:10px;border-bottom:1px solid #E0E0E0;}
+div#bodycontainer #bodyblock {margin: 10px 20px 0 20px;color:black;}
+body#b_f div#bannerblock h1{font-size:32px;color:#900;line-height:101%;letter-spacing:-.5px;}
+body#b_f ul {list-style-type:none;padding:0;margin:0;}
+body#b_f ul li.regularitem{list-style-type:none;padding:0;margin:0;margin-bottom:26px;}
+
+h4.itemtitle{color:#8A8895;font-size:16px;letter-spacing:-.25px;font-weight:700;padding:0;margin:0;}
+h5.itemposttime{font-size:11px;font-weight:bold;color:#666;margin-top:3px;margin-bottom: 6px;-webkit-margin-before:0;-webkit-margin-after:0;	padding-bottom:4px;}
+h5.itemposttime span{color:#333;}
+div.itemcontent{font: 14px/130% 'Century Gothic',Arial,Helvetica,Sans-Serif;overflow:hidden;	width:99%;}
+
+div.itemcontent img[align=right] {padding-left:12px;padding-bottom:12px;}
+div.itemcontent img[align=left] {padding-right:12px;padding-bottom:12px;}
+p.mediaenclosure {text-transform:uppercase;font-weight:bold;margin:10px 0 10px 0;}
+p.mediaenclosure a {text-transform:none;}
